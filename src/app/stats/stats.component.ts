@@ -13,25 +13,18 @@ data: any;
 
 constructor(
     private http: HttpClient
-  ) {
-  }
+  ) {}
 
   ngOnInit(){
     const headers = new HttpHeaders().set("Accept","*/*")
     this.http.get<Stats []>('http://localhost:4200/dealer/cortlandcdj/moxi_stats',{headers})
       .subscribe((response) => {
         this.data = <Stats []>response;
-        // console.log(response)
+        console.log(this.data)
+        // console.log(datas)
       })
 
-
-
-
-
     // let obs = this.http.get('http://dmsinformation.services.moxi-dev.com/dealer/cortlandcdj/moxi_stats');
-
-
-
 
     // obs.subscribe(() => {
     //   console.log('Working')
@@ -47,5 +40,4 @@ constructor(
     //     }
     //   )
   }
-
 }
