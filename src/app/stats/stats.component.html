@@ -12,10 +12,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor = 'let d of data$'>
-              <td>{{d.messages_sent}}</td>
-              <td>{{d.tasks_approved}}</td>
-              <td>{{d.mros_created}}</td>
+            <tr *ngIf = "data">
+              <td>{{data.messages_sent}}</td>
+              <td>{{data.tasks_approved}}</td>
+              <td>{{data.mros_created}}</td>
             </tr>
           </tbody>
         </table>

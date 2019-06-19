@@ -9,7 +9,7 @@ import { Stats } from './stats.model';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-data$: Stats[];
+data: any;
 
 constructor(
     private http: HttpClient
@@ -18,9 +18,10 @@ constructor(
 
   ngOnInit(){
     const headers = new HttpHeaders().set("Accept","*/*")
-    this.http.get('http://localhost:4200/dealer/cortlandcdj/moxi_stats',{headers})
-      .subscribe((respone) => {
-        console.log(respone)
+    this.http.get<Stats []>('http://localhost:4200/dealer/cortlandcdj/moxi_stats',{headers})
+      .subscribe((response) => {
+        this.data = <Stats []>response;
+        // console.log(response)
       })
 
 
