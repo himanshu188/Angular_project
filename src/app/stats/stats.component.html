@@ -3,6 +3,23 @@
     <div class="col-md-12">
       <div class="text-center">
         <h2> Statistics</h2>
+        <table>
+          <thead>
+            <tr>
+              <td>Messages Sent</td>
+              <td>Tasks Approved</td>
+              <td>Mros Created</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let d of data;">
+              <td>{{d.messages_sent}}</td>
+              <td>{{d.tasks_approved}}</td>
+              <td>{{d.mros_created}}</td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>

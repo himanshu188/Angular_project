@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-stats',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
+public data: any;
+  constructor(
+    private http: HttpClient
+  ) {
+  }
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.http.get('http://dmsinformation.services.moxi-dev.com/dealer/cortlandcdj/moxi_stats')
+    .subscribe(
+        response => {
+          // this.data = response;
+          console.log("date: " + response);
+          // var sample = JSON.stringify(response);
+        }
+      )
   }
 
 }

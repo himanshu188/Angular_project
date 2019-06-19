@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { StatsComponent } from './stats/stats.component';
+// import { HttpClient } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -22,6 +24,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
