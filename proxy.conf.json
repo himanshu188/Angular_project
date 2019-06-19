@@ -1,0 +1,8 @@
+{
+  "/dealer/cortlandcdj/moxi_stats": {
+    "target": "http://dmsinformation.services.moxi-dev.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

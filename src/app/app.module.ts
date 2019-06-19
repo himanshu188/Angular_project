@@ -7,7 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { StatsComponent } from './stats/stats.component';
 // import { HttpClient } from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+// import {Jsonp } from '@angular/http';
+import {Observable} from 'rxjs';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientJsonpModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
