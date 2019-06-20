@@ -8,7 +8,7 @@ import { Stats } from './stats.model';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-data: Stats [];
+data = [];
 ObjectKeys = Object.keys;
 doneflag = 0;
 constructor(
@@ -31,7 +31,7 @@ constructor(
     this.clickmsg = value;
     this.http.get<Stats []>('http://localhost:4200/dealer/'+ this.clickmsg + '/moxi_stats')
       .subscribe((response) => {
-        this.data = <Stats []>response;
+        this.data = response;
         for(let res in this.data){
           if(this.data[res] != 0){ flag = 1;}
         }
