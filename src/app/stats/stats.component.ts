@@ -16,28 +16,26 @@ constructor(
   ) {}
 
   ngOnInit(){
-    const headers = new HttpHeaders().set("Accept","*/*")
+    const headers = new HttpHeaders().set("Accept","*/*");
     this.http.get<Stats []>('http://localhost:4200/dealer/cortlandcdj/moxi_stats',{headers})
       .subscribe((response) => {
         this.data = <Stats []>response;
         console.log(this.data)
         // console.log(datas)
       })
+  }
+  clickmsg = 'Cortland'
+  onClickMe(value: string){
+    this.clickmsg = value;
+    this.http.get<Stats []>('http://localhost:4200/dealer/'+ this.clickmsg + '/moxi_stats')
+      .subscribe((response) => {
+        this.data = <Stats []>response;
+        console.log(this.data)
+        // console.log(datas)
+      })
+  }
 
-    // let obs = this.http.get('http://dmsinformation.services.moxi-dev.com/dealer/cortlandcdj/moxi_stats');
-
-    // obs.subscribe(() => {
-    //   console.log('Working')
-    // })
-    // this.http.get<Stats[] >('http://dmsinformation.services.moxi-dev.com/dealer/cortlandcdj/moxi_stats')
-    // .subscribe(
-    //     response => {
-    //       console.log(response)
-    //       // this.data$ = response
-    //       // this.data = response;
-    //       // console.log("date: " + response);
-    //       // var sample = JSON.stringify(response);
-    //     }
-    //   )
+  onSubmit(){
+    console.log('working');
   }
 }
