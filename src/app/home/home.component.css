@@ -4,6 +4,7 @@
 .backgr{
   background-image : url('back.jpg');
   background-size: 100%;
+  background-position: center;
   margin-left: 0;
   margin-right: 0;
 }
