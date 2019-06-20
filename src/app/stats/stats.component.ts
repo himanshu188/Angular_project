@@ -9,29 +9,43 @@ import { Stats } from './stats.model';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-data: any;
-
+data: Stats [];
+datas = [];
 constructor(
     private http: HttpClient
   ) {}
-
+  keys() : Array<String>{
+    return Object.keys(this.datas[0])
+  }
   ngOnInit(){
+    var flag = 0;
     const headers = new HttpHeaders().set("Accept","*/*");
     this.http.get<Stats []>('http://localhost:4200/dealer/cortlandcdj/moxi_stats',{headers})
       .subscribe((response) => {
         this.data = <Stats []>response;
+        this.datas.push(response);
         console.log(this.data)
-        // console.log(datas)
+        console.log(this.datas[0])
+        console.log(Object.keys(this.data))
       })
   }
   clickmsg = 'Cortland'
   onClickMe(value: string){
+    var flag = 0;
     this.clickmsg = value;
     this.http.get<Stats []>('http://localhost:4200/dealer/'+ this.clickmsg + '/moxi_stats')
       .subscribe((response) => {
         this.data = <Stats []>response;
-        console.log(this.data)
-        // console.log(datas)
+        this.datas = [];
+        this.datas.push(response);
+        console.log(Object.keys(this.data))
+        for(let res in this.datas[0]){
+          console.log(this.datas[0][res])
+          if(this.datas[0][res] != 0){ flag = 1;}
+        }
+        if(flag == 0)
+          this.datas = [];
+
       })
   }
 
